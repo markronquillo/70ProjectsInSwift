@@ -8,18 +8,49 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var slider : UISlider!
+    @IBOutlet weak var amountText : UITextField!
+    @IBOutlet weak var tipPercentLabel : UILabel!
+    @IBOutlet weak var tipTotalLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    
+    var amount = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        slider.addTarget(self, action: #selector(ViewController.sliderChange), for: .valueChanged)
+        
+        updateValues()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        amount = Double(textField.text!)!
+        
+        textField.text = "$\(String(format: "%.2f", amount))";
+        textField.resignFirstResponder()
+        
+        updateValues()
+        return true
+    }
+    
+    func updateValues() {
+        let tipPercent = Int(slider.value*100)
+        let tipTotal = amount * Double(tipPercent) / 100
+        tipPercentLabel.text = "Tip (\(tipPercent)%)"
+        tipTotalLabel.text = String(format: "%.2f", tipTotal)
+        totalLabel.text = String(format: "%.2f", tipTotal + amount)
+    }
+    
+    func sliderChange() {
+        updateValues()
+    }
+    
 }
 

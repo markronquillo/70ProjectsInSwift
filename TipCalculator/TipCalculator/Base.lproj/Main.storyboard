@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,69 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="A64-fq-oqy">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="181" id="Gcx-8I-VBw"/>
+                                    <constraint firstAttribute="height" constant="48" id="bbj-ph-sQg"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="CTZ-hh-Hfo"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip (x%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nS3-8K-SwL">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$3.75" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoK-43-TEz">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1b-EC-XGC">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$31.75" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihL-wM-PVq">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="EOS-pW-26m"/>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="A64-fq-oqy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="155" id="4EE-wf-Tth"/>
+                            <constraint firstItem="YoK-43-TEz" firstAttribute="top" secondItem="A64-fq-oqy" secondAttribute="bottom" constant="37" id="4nu-Kn-Adk"/>
+                            <constraint firstItem="YoK-43-TEz" firstAttribute="leading" secondItem="nS3-8K-SwL" secondAttribute="trailing" constant="64" id="8b2-fO-6Eo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YoK-43-TEz" secondAttribute="trailing" constant="17" id="Pl3-Ed-cnm"/>
+                            <constraint firstItem="nS3-8K-SwL" firstAttribute="top" secondItem="A64-fq-oqy" secondAttribute="bottom" constant="37" id="T1L-gw-vBC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="A64-fq-oqy" secondAttribute="trailing" constant="17" id="d4w-I6-bhc"/>
+                            <constraint firstItem="ihL-wM-PVq" firstAttribute="top" secondItem="YoK-43-TEz" secondAttribute="bottom" constant="34" id="h0J-T7-2uL"/>
+                            <constraint firstItem="ihL-wM-PVq" firstAttribute="leading" secondItem="z1b-EC-XGC" secondAttribute="trailing" constant="57" id="jDw-36-BoE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EOS-pW-26m" secondAttribute="trailing" constant="17" id="kjF-cd-PpQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ihL-wM-PVq" secondAttribute="trailing" constant="17" id="pYD-Al-D0Q"/>
+                            <constraint firstItem="EOS-pW-26m" firstAttribute="top" secondItem="z1b-EC-XGC" secondAttribute="bottom" constant="80" id="rxF-gf-Q1K"/>
+                            <constraint firstItem="EOS-pW-26m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="uwT-Te-NVU"/>
+                            <constraint firstItem="z1b-EC-XGC" firstAttribute="top" secondItem="nS3-8K-SwL" secondAttribute="bottom" constant="34" id="zhF-GY-ZUe"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="amountText" destination="A64-fq-oqy" id="nEl-0J-i0K"/>
+                        <outlet property="slider" destination="EOS-pW-26m" id="X3I-Oc-f6V"/>
+                        <outlet property="tipPercentLabel" destination="nS3-8K-SwL" id="0uK-ZQ-ER4"/>
+                        <outlet property="tipTotalLabel" destination="YoK-43-TEz" id="TXV-Mt-hUT"/>
+                        <outlet property="totalLabel" destination="ihL-wM-PVq" id="vPO-Hl-EBd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
 </document>
