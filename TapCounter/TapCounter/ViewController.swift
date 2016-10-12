@@ -25,14 +25,13 @@ class ViewController: UIViewController {
         count = 0
     }
     
-    
     func increment() {
         count += 1
     }
     
     func incrementHold() {
         increment()
-        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(ViewController.increment), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.increment), userInfo: nil, repeats: true)
     }
     
     func touchUp() {

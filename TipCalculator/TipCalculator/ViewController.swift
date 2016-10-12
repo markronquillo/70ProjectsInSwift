@@ -8,6 +8,16 @@
 
 import UIKit
 
+/**
+ Write an app in MVC pattern -- DONE
+ Work with Computed Properties
+ Create a toolbar above the keyboard
+ Set min and max values for Slider
+ Convert Strings to Int / Double and vice versa -- DONE
+ Handle calculations with formulas written in the Model 
+ Enable or disable objects based on if the keyboard is open
+ Get values from the UISlider and convert them to Int for use in the Model
+ */
 class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var slider : UISlider!
@@ -39,6 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         updateValues()
         return true
     }
+    
     
     func updateValues() {
         let tipPercent = Int(slider.value*100)
