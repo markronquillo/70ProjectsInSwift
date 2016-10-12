@@ -12,11 +12,18 @@ class ViewController: UIViewController {
 //            http://stackoverflow.com/questions/26956728/changing-the-status-bar-color-for-specific-viewcontrollers-using-swift-in-ios8
     
     @IBOutlet weak var textArea : UITextView!
-
+    
+    var bgView : UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.setViewMode), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 20)
+        bgView = UIView(frame: frame)
+        bgView.backgroundColor = UIColor.black
+        self.view.addSubview(bgView)
         
         setViewMode()
     }
@@ -33,16 +40,14 @@ class ViewController: UIViewController {
             textArea.keyboardAppearance = UIKeyboardAppearance.dark
             textArea.backgroundColor = UIColor.black
             textArea.textColor = UIColor.white
-            UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-//            self.navigationController?.navigationBar.barStyle = .black
-//            self.navigationController?.navigationBar.tintColor = UIColor.white
+            UIApplication.shared.statusBarStyle = .lightContent
+            bgView.backgroundColor = UIColor.black
         } else {
             textArea.keyboardAppearance = UIKeyboardAppearance.default
             textArea.backgroundColor = UIColor.white
             textArea.textColor = UIColor.black
             UIApplication.shared.statusBarStyle = .default
-//            self.navigationController?.navigationBar.barStyle = .default
-//            self.navigationController?.navigationBar.tintColor = UIColor.black
+            bgView.backgroundColor = UIColor.white
         }
     }
 

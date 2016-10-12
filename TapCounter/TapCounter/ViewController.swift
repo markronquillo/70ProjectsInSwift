@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     
     func increment() {
         count += 1
+        print("test")
     }
     
     func incrementHold() {
@@ -40,8 +41,16 @@ class ViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        tapButton.addTarget(self, action: #selector(ViewController.incrementHold), for: .touchDown)
-        tapButton.addTarget(self, action: #selector(ViewController.touchUp), for: [.touchUpInside, .touchUpOutside])
+        
+        // First Approach
+        // tapButton.addTarget(self, action: #selector(ViewController.incrementHold), for: .touchDown)
+        // tapButton.addTarget(self, action: #selector(ViewController.touchUp), for: [.touchUpInside, .touchUpOutside])
+        
+        // Second Approach
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.increment))
+        tapButton.addGestureRecognizer(longPressGesture)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

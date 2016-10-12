@@ -28,10 +28,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var amount = 0.0
     
+    var tip = Tip(amount: 0, tipPercentage: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         slider.addTarget(self, action: #selector(ViewController.sliderChange), for: .valueChanged)
+        
+        let rect = CGRect(x: 0, y: 0, width: 320, height: 50)
+        let doneToolbar: UIToolbar = UIToolbar(frame: rect)
+        doneToolbar.barStyle = UIBarStyle.blackTranslucent
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(ViewController.closeKeyboard));
+        
+        var items = [UIBarButtonItem]()
+        items.append(flexSpace)
+        items.append(done)
+        
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        amountText.inputAccessoryView = doneToolbar
         
         updateValues()
     }
@@ -41,25 +60,30 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        amount = Double(textField.text!)!
-        
-        textField.text = "$\(String(format: "%.2f", amount))";
-        textField.resignFirstResponder()
-        
-        updateValues()
+        updateAmount(textField: textField)
         return true
     }
     
+    func closeKeyboard() {
+        updateAmount(textField: amountText)
+        updateValues()
+    }
+    
+    func updateAmount(textField : UITextField) {
+        tip.amount = Double(textField.text!)!
+        
+        textField.text = "$\(String(format: "%.2f", tip.amount))";
+        textField.resignFirstResponder()
+    }
     
     func updateValues() {
-        let tipPercent = Int(slider.value*100)
-        let tipTotal = amount * Double(tipPercent) / 100
-        tipPercentLabel.text = "Tip (\(tipPercent)%)"
-        tipTotalLabel.text = String(format: "%.2f", tipTotal)
-        totalLabel.text = String(format: "%.2f", tipTotal + amount)
+        tipPercentLabel.text = "Tip (\(String(format: "%.2f", tip.tipPercentage * 100))%)"
+        tipTotalLabel.text = String(format: "%.2f", tip.tipAmount)
+        totalLabel.text = String(format: "%.2f", tip.totalAmount)
     }
     
     func sliderChange() {
+        tip.tipPercentage = Double(slider.value)
         updateValues()
     }
     

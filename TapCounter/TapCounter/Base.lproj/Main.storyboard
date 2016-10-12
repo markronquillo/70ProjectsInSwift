@@ -33,11 +33,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="n4c-eX-XKg" secondAttribute="trailing" constant="117" id="1IZ-1W-wa4"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="n4c-eX-XKg" secondAttribute="leading" id="0ve-RA-eEd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="n4c-eX-XKg" secondAttribute="trailing" id="9JX-eL-UG3"/>
                             <constraint firstItem="n4c-eX-XKg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="199" id="SSs-zH-Ekj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4hN-mx-6xg" secondAttribute="trailing" constant="129" id="VJi-en-U0m"/>
                             <constraint firstItem="4hN-mx-6xg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="129" id="j2R-pd-b0D"/>
-                            <constraint firstItem="n4c-eX-XKg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="117" id="n33-ZN-bzo"/>
                             <constraint firstItem="4hN-mx-6xg" firstAttribute="top" secondItem="n4c-eX-XKg" secondAttribute="bottom" constant="36" id="q4t-eZ-1xJ"/>
                         </constraints>
                     </view>
@@ -60,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055.625" y="122.53521126760563"/>
+            <point key="canvasLocation" x="1055.2" y="121.88905547226388"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mP1-Wb-xyC">
